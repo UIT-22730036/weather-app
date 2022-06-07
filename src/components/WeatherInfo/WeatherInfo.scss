@@ -1,0 +1,10 @@
+.weather-info {
+  height: calc(60vh - 6rem);
+  width: 100vw;
+  background-color: rgb(73, 143, 226);
+  background-image: linear-gradient(
+    90deg,
+    rgba(73, 143, 226, 1) 50%,
+    rgba(70, 168, 252, 1) 100%
+  );
+}

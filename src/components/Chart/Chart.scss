@@ -1,0 +1,32 @@
+.chart {
+  height: 40vh;
+  width: 100vw;
+  position: relative;
+  .chart__svg {
+    height: 100%;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    img {
+      position: absolute;
+    }
+  }
+  .chart__title {
+    position: fixed;
+    top: 62vh;
+    left: 1rem;
+    font-size: 1.5rem;
+    .chart__title--tide {
+      color: #c1e5f7;
+    }
+    .chart__title--sunset {
+      color: orange;
+      margin-left: 1rem;
+    }
+  }
+  .chart__time {
+    position: fixed;
+    top: 94vh;
+    left: 48%;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,30 @@
+.weather-info__details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    margin-right: 0.5rem;
+  }
+  .weather-info__overview {
+    & > span {
+      font-size: 2rem;
+      color: white;
+    }
+    .weather-info__status {
+      display: flex;
+      justify-content: space-between;
+      width: 120px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 400;
+      .weather-info__status--temperature,
+      .weather-info__status--humidity {
+        height: 1rem;
+        width: 1rem;
+        stroke: white;
+        fill: white;
+        stroke-width: 3px;
+      }
+    }
+  }
+}

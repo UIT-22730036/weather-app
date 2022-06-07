@@ -13,37 +13,44 @@ import {
 
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "./Chart.scss";
 
 const Chart = () => {
   const [moonIsVisible, setMoonIsVisible] = useState(false);
   const [time, setTime] = useState("");
-  gsap.registerPlugin(MotionPathPlugin, ScrollTrigger);
+
+  gsap.registerPlugin(MotionPathPlugin);
+
   useEffect(() => {
     positionSunHandler();
-    document.querySelector(".chart__svg").addEventListener("scroll", (e) => {
-      positionSunHandler();
-    });
+    document
+      .querySelector(".chart__svg")
+      .addEventListener("scroll", positionSunHandler);
     return document
       .querySelector(".chart__svg")
       .removeEventListener("scroll", () => {});
   }, []);
+
   const positionSunHandler = () => {
     let chartSVGEl = document.querySelector(".chart__svg");
     let scrollPercentage =
       chartSVGEl.scrollLeft / (chartSVGEl.scrollWidth - minX * 2);
+
     if (scrollPercentage > 1) {
       scrollPercentage = 1;
     }
+
     setTime(formatTime(convertScrollToTime(scrollPercentage)));
+
     let rawPath = MotionPathPlugin.getRawPath("#motionPath"),
       point;
     MotionPathPlugin.cacheRawPathMeasurements(rawPath);
     point = MotionPathPlugin.getPositionOnPath(rawPath, scrollPercentage);
+
     let sun = document.getElementById("sun");
     let moon = document.getElementById("moon");
+
     if (point.x > 0) {
       sun.setAttribute("transform", `translate(${point.x},${point.y})`);
     } else {
@@ -56,6 +63,7 @@ const Chart = () => {
     }
     moon.setAttribute("transform", `translate(${point.x},100)`);
   };
+
   return (
     <div className="chart">
       <div className="chart__svg">

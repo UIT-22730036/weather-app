@@ -1,6 +1,6 @@
-const BASE_URL = "https://api.openweathermap.org";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-const API_KEY = "429b355d2659e77394febd5a0967adf9";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const weatherService = {
   getCurrentWeatherInfo: (city, axios) => {
